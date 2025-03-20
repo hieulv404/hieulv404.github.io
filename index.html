@@ -134,9 +134,9 @@
             const slide = document.createElement("div");
             slide.classList.add("slide");
             slide.innerHTML = `
-                <img src="${imageFolder}${i}.jpg" alt="Bild ${i}">
-                <div class="caption">${captions[i - 1] || ""}</div>
-            `;
+                    <img src="${imageFolder}${i}.jpg" alt="Bild ${i}">
+                    <div class="caption">${captions[i - 1] || ""}</div>
+                `;
             slideshowContainer.appendChild(slide);
         }
 
@@ -157,15 +157,18 @@
         // 🎵 Autoplay-Fix für Musik: Beginne Musik mit Benutzerinteraktion
         const music = document.getElementById("bg-music");
 
-        // Starte Musik bei Benutzerinteraktion (z.B. Klick)
-        document.body.addEventListener("click", () => {
-            if (music.paused) {
-                music.play().catch(error => console.log("Autoplay blocked:", error)); // Fehlerbehandlung, falls Autoplay blockiert wird
-            }
+        // Versuche Musik beim Laden der Seite zu starten
+        music.play().catch(error => {
+            console.log("Autoplay blocked:", error);
+            // Starte Musik bei Benutzerinteraktion (z.B. Klick)
+            document.body.addEventListener("click", () => {
+                if (music.paused) {
+                    music.play().catch(error => console.log("Autoplay blocked:", error)); // Fehlerbehandlung, falls Autoplay blockiert wird
+                }
+            });
         });
     });
 </script>
-
 
 </body>
 </html>
