@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We never forget</title>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Playfair+Display:wght@500&display=swap">
+
+    <style>
+        /* Background */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('images/alpenpanorama.jpg') no-repeat center center/cover;
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Headline */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #e6c78f;
+            font-size: 8vw;
+            margin: 0 auto;
+        }
+
+        h2, h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4vw;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Slides */
+        .slide {
+            display: none;
+            width: 100%;
+            animation: fade 2s;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        /* Caption */
+        .caption {
+            margin-top: 5px;
+            font-size: 1.4em;
+            color: #444;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            position: relative;
+            top: -30px;
+        }
+
+        /* Fade Effect */
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        /* Show Active Slide */
+        .active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 9vw; }
+            h2, h3 { font-size: 6vw; }
+            .caption { font-size: 1em; }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>We never forget</h1>
+<h2>In Memories</h2>
+<h3>Waltraud Klesy</h3>
+
+<div class="slideshow-container" id="slideshow"></div>
+
+<!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+    <source src="music/erinnerungen.mp3" type="audio/mp3">
+    Dein Browser unterstützt kein Audio-Element.
+</audio>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const imageFolder = "images/";
+        const imageCount = 16;
+
+        const captions = [
+            "Erster Urlaub am Meer", "Spaziergang am See", "Lachen im Sommer", "Abendrot in den Bergen",
+            "Familienfeier 2005", "Winterwanderung im Schnee", "Blumenwiese im Frühling", "Zusammen am Lagerfeuer",
+            "Aussicht vom Gipfel", "Herbstliche Spaziergänge", "Geburtstagsüberraschung", "Ein ganz besonderer Tag",
+            "Freunde fürs Leben", "Sonnenuntergang am Strand", "Wanderung im Wald", "Silvesterfeier 2020"
+        ];
+
+        const slideshowContainer = document.getElementById("slideshow");
+
+        for (let i = 1; i <= imageCount; i++) {
+            const slide = document.createElement("div");
+            slide.classList.add("slide");
+            slide.innerHTML = `
+                    <img src="${imageFolder}${i}.jpg" alt="Bild ${i}">
+                    <div class="caption">${captions[i - 1] || ""}</div>
+                `;
+            slideshowContainer.appendChild(slide);
+        }
+
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showNextSlide() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+        }
+
+        slides[0].classList.add('active');
+        setInterval(showNextSlide, 4000);
+
+        // 🎵 Autoplay Fix
+        const music = document.getElementById("bg-music");
+        document.body.addEventListener("click", () => {
+            if (music.paused) {
+                music.play().catch(error => console.log("Autoplay blocked:", error));
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
