@@ -146,25 +146,28 @@
 
         // Funktion zum Wechseln der Folie
         function showNextSlide() {
-            slides.forEach(slide => slide.classList.remove('active')); // Entferne die 'active'-Klasse von allen Folien
-            slideIndex = (slideIndex + 1) % slides.length; // Berechne den nächsten Index
-            slides[slideIndex].classList.add('active'); // Füge die 'active'-Klasse zur nächsten Folie hinzu
+            slides.forEach(slide => slide.classList.remove('active'));
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
         }
 
-        slides[0].classList.add('active'); // Mache die erste Folie aktiv
-        setInterval(showNextSlide, 4000); // Wechsle alle 4 Sekunden zur nächsten Folie
+        // Initiale Anzeige und Intervall
+        slides[0].classList.add('active');
+        setInterval(showNextSlide, 4000);
 
-        // 🎵 Autoplay-Fix für Musik: Beginne Musik mit Benutzerinteraktion
+        // 🎵 Musik-Handling
         const music = document.getElementById("bg-music");
 
-        // Versuche Musik beim Laden der Seite zu starten
+        // Automatisches Abspielen versuchen
         music.play().catch(error => {
             console.log("Autoplay blocked:", error);
-            // Starte Musik bei Benutzerinteraktion (z.B. Klick)
-            document.body.addEventListener("click", () => {
+            // Fallback: Starte Musik bei erster Benutzerinteraktion
+            document.body.addEventListener("click", function playOnInteraction() {
                 if (music.paused) {
-                    music.play().catch(error => console.log("Autoplay blocked:", error)); // Fehlerbehandlung, falls Autoplay blockiert wird
+                    music.play().catch(error => console.log("Playback failed:", error));
                 }
+                // Entferne Event-Listener nach erstem Klick
+                document.body.removeEventListener("click", playOnInteraction);
             });
         });
     });
