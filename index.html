@@ -114,9 +114,11 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // 📁 Bilder-Ordner und Anzahl
         const imageFolder = "images/";
         const imageCount = 16;
 
+        // ✏️ Bildunterschriften
         const captions = [
             "Erster Urlaub am Meer", "Spaziergang am See", "Lachen im Sommer", "Abendrot in den Bergen",
             "Familienfeier 2005", "Winterwanderung im Schnee", "Blumenwiese im Frühling", "Zusammen am Lagerfeuer",
@@ -124,39 +126,46 @@
             "Freunde fürs Leben", "Sonnenuntergang am Strand", "Wanderung im Wald", "Silvesterfeier 2020"
         ];
 
+        // 🎬 Slideshow Container
         const slideshowContainer = document.getElementById("slideshow");
 
+        // Bilder in die Slideshow einfügen
         for (let i = 1; i <= imageCount; i++) {
             const slide = document.createElement("div");
             slide.classList.add("slide");
             slide.innerHTML = `
-                    <img src="${imageFolder}${i}.jpg" alt="Bild ${i}">
-                    <div class="caption">${captions[i - 1] || ""}</div>
-                `;
+                <img src="${imageFolder}${i}.jpg" alt="Bild ${i}">
+                <div class="caption">${captions[i - 1] || ""}</div>
+            `;
             slideshowContainer.appendChild(slide);
         }
 
+        // 📸 Initialer Index für die Slideshow
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slide');
 
+        // Funktion zum Wechseln der Folie
         function showNextSlide() {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].classList.add('active');
+            slides.forEach(slide => slide.classList.remove('active')); // Entferne die 'active'-Klasse von allen Folien
+            slideIndex = (slideIndex + 1) % slides.length; // Berechne den nächsten Index
+            slides[slideIndex].classList.add('active'); // Füge die 'active'-Klasse zur nächsten Folie hinzu
         }
 
-        slides[0].classList.add('active');
-        setInterval(showNextSlide, 4000);
+        slides[0].classList.add('active'); // Mache die erste Folie aktiv
+        setInterval(showNextSlide, 4000); // Wechsle alle 4 Sekunden zur nächsten Folie
 
-        // 🎵 Autoplay Fix
+        // 🎵 Autoplay-Fix für Musik: Beginne Musik mit Benutzerinteraktion
         const music = document.getElementById("bg-music");
+
+        // Starte Musik bei Benutzerinteraktion (z.B. Klick)
         document.body.addEventListener("click", () => {
             if (music.paused) {
-                music.play().catch(error => console.log("Autoplay blocked:", error));
+                music.play().catch(error => console.log("Autoplay blocked:", error)); // Fehlerbehandlung, falls Autoplay blockiert wird
             }
         });
     });
 </script>
+
 
 </body>
 </html>
