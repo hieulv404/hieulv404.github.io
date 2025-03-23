@@ -82,7 +82,8 @@
             margin: 5px 0;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
-		.carousel-item {
+		
+.carousel-item {
         opacity: 0;
   transition-property: opacity;
   transition-duration: 1s;
@@ -92,14 +93,15 @@
       .carousel-fade .active.carousel-item-end {
         transition: opacity 0s 1s;
       }
-
         
 		.max-height-70{
 			height:570px;
 		}
 		.carousel-item img {
-			 object-fit: contain; max-height: 40rem;
-
+			object-fit: contain; 
+			max-height: 40rem;
+			width: 100%;
+    height: 100%;
 		}
 
         .carousel-caption {
@@ -115,10 +117,7 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-		.carousel .carousel-item.active {
-  opacity: 1;
-  transition: opacity 1s ease-in;
-}
+		
 
         @media (max-width: 600px) {
             h1 { font-size: 9vw; }
@@ -260,12 +259,12 @@
     // Carousel item
     const item = document.createElement("div");
     item.classList.add("carousel-item");
-	item.classList.add("item");
+
 	item.classList.add("img-fluid");
     if (i === startImage) item.classList.add("active");
 
     item.innerHTML = `
-        <img src="${imageFolder}${i}.jpg" class="d-block w3-animate-fading" alt="Bild ${i}">
+        <img src="${imageFolder}${i}.jpg" class="d-block" alt="Bild ${i}">
         <div class="carousel-caption d-none d-md-block">
             <p>${captions[i - 2] || ""}</p>
         </div>
@@ -302,12 +301,7 @@
             $muteBtn.html($music.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>');
         });
     });
-	$(document).ready(function(){
-	  console.log($('#carouselwithIndicators').css('height')); // check the initial height of the carousel;
-		  
-	  // now apply this height as a max-height on all the image items; css will handle the rest;
-	  $('#carouselwithIndicators').find('.carousel-item img').css('max-height', $('#carouselwithIndicators').css('height'))
-	});
+	
 </script>
 </body>
 </html>
