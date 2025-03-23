@@ -6,8 +6,7 @@
     <title>We never forget</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great_Vibes&family=Playfair+Display:wght@500&display=swap">
 
@@ -30,27 +29,29 @@
         }
 
         .header-container {
-            max-width: 600px;
-        }
+			position: relative;
+			z-index: 1;
+			padding: 2rem 0;
+		}
 
         .header-box {
             position: relative;
-            background: rgba(255, 255, 255, 0.9);
+            
             z-index: 2;
         }
 
         .header-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/alpenpanorama_3.jpg') no-repeat center center/cover;
-            opacity: 0.7;
-            border-radius: 0.75rem;
-            z-index: 1;
+            content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.3); /* Etwas mehr Weiß für bessere Helligkeit */
+			z-index: -1;
         }
+	
+			
 
         h1, h2, h3 {
             position: relative;
@@ -69,7 +70,7 @@
         h2 {
             font-family: 'Dancing Script', cursive;
             font-size: 4vw;
-            color: #555;
+            color: #452c2c;
             margin: 5px 0;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
@@ -84,9 +85,12 @@
 
         .carousel-inner img {
             width: 100%;
-            max-height: 70vh;
             object-fit: contain;
+			max-height: 70vh;
         }
+		.max-height-70{
+			max-height: 70vh;
+		}
 
         .carousel-caption {
             color: white;
@@ -121,6 +125,12 @@
             font-size: 1.4rem;
             transition: all 0.3s ease-in-out;
         }
+		.text-memory{
+			color:#392525;
+		}
+		.text-name{
+			color:#332121;
+		}
 
         /* Adjust button size on small screens */
         @media (max-width: 600px) {
@@ -139,31 +149,39 @@
 </head>
 <body>
 <div class="container header-container text-center my-1 position-relative">
-    <div class="header-box rounded-3 shadow-lg p-4">
+    <div class="header-box rounded-3 shadow-lg p-1 position-relative">
         <h2 class="display-1 fw-light text-warning">We never forget</h2>
-        <h2 class="display-6 fw-bold text-muted">In Memories</h2>
-        <h3 class="fs-3 fst-italic text-dark">Waltraud Klesy</h3>
+        <h2 class="display-6 fw-bold text-memory">In Memories</h2>
+        <h3 class="fs-3 fst-italic text-name">Waltraud Klesy</h3>
     </div>
 </div>
 
-<!-- Bootstrap Carousel -->
-<div id="memoryCarousel" class="carousel slide carousel-fade shadow-lg rounded-3 mx-auto my-1" data-bs-ride="carousel" style="max-width: 800px;">
-    <div class="carousel-inner" id="carousel-inner"></div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#memoryCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#memoryCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 
 <!-- Audio Element -->
 <audio id="bg-music" loop muted>
     <source src="music/erinnerungen.mp3" type="audio/mp3">
     Dein Browser unterstützt kein Audio-Element.
 </audio>
+
+  <!-- Inner -->
+<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+  <!-- Indicators -->
+  <div class="carousel-indicators" id="carousel-indicators"></div>
+
+  <!-- Inner -->
+  <div class="carousel-inner" id="carousel-inner"></div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->
 
 <!-- Bootstrap Audio Controls -->
 <!-- Audio Controls -->
@@ -180,44 +198,64 @@
 
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const imageFolder = "images/";
-        const imageCount = 16;
-        const captions = [
-            "Noch kann ich nicht allein stehen",
-            "Zusammen mit Schwester Ilse",
-            "",
-            "Die Stiftstraßen-Gang",
-            "Alle drei Schwestern: Marianne, Ilse und Waltraud",
-            "Biking is my favourite",
-            "Traumauto DKW",
-            "Teenie Waltraud",
-            "Pettycoat forever",
-            "Spaziergänge am Rhein…",
-            "… und im Wald",
-            "Woman @ work",
-            "2. Frühling mit Klaus",
-            "Im Wintersport",
-            "Family am Bodensee",
-        ];
+		const imageFolder = "images/";
+		const imageCount = 16;
+		const startImage = 2; // Start bei Bild 2
+		const captions = [
+			"Noch kann ich nicht allein stehen",
+			"Zusammen mit Schwester Ilse",
+			"",
+			"Die Stiftstraßen-Gang",
+			"Alle drei Schwestern: Marianne, Ilse und Waltraud",
+			"Biking is my favourite",
+			"Traumauto DKW",
+			"Teenie Waltraud",
+			"Pettycoat forever",
+			"Spaziergänge am Rhein…",
+			"… und im Wald",
+			"Woman @ work",
+			"2. Frühling mit Klaus",
+			"Im Wintersport",
+			"Family am Bodensee",
+		];
 
-        const carouselInner = document.getElementById("carousel-inner");
+		const carouselInner = document.getElementById("carousel-inner");
+		const indicators = document.getElementById("carousel-indicators");
 
-        for (let i = 2; i <= imageCount; i++) {
-            const item = document.createElement("div");
-            item.classList.add("carousel-item");
-            if (i === 2) item.classList.add("active");
-            item.innerHTML = `
-                    <img src="${imageFolder}${i}.jpg" class="d-block" alt="Bild ${i}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p>${captions[i - 2] || ""}</p>
-                    </div>
-                `;
-            carouselInner.appendChild(item);
-        }
+		for (let i = 2; i <= imageCount; i++) {
+    const isActive = i === startImage ? "active" : "";
+
+    // Indicator buttons
+    const indicatorBtn = document.createElement("button");
+    indicatorBtn.type = "button";
+    indicatorBtn.setAttribute("data-mdb-target", "#carouselBasicExample");
+    indicatorBtn.setAttribute("data-mdb-slide-to", i - 2);  // Fixing the index (starts from 0)
+    indicatorBtn.setAttribute("aria-label", `Slide ${i}`);
+    if (i === startImage) {
+        indicatorBtn.classList.add("active");
+        indicatorBtn.setAttribute("aria-current", "true");
+    }
+    indicators.appendChild(indicatorBtn);
+
+    // Carousel item
+    const item = document.createElement("div");
+    item.classList.add("carousel-item");
+    if (i === startImage) item.classList.add("active");
+
+    item.innerHTML = `
+        <img src="${imageFolder}${i}.jpg" class="d-block w-100" alt="Bild ${i}">
+        <div class="carousel-caption d-none d-md-block">
+            <p>${captions[i - 2] || ""}</p>
+        </div>
+    `;
+    carouselInner.appendChild(item);
+}
+
+    
 
         const $music = $("#bg-music")[0];
         const $playPauseBtn = $("#playPauseBtn");
