@@ -82,14 +82,24 @@
             margin: 5px 0;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
+		.carousel-item {
+        opacity: 0;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function:linear;
+      }
+	  .carousel-fade .active.carousel-item-start,
+      .carousel-fade .active.carousel-item-end {
+        transition: opacity 0s 1s;
+      }
 
-        .carousel-inner img {
-            width: 100%;
-            object-fit: contain;
-			max-height: 70vh;
-        }
+        
 		.max-height-70{
-			max-height: 70vh;
+			height:570px;
+		}
+		.carousel-item img {
+			 object-fit: contain; max-height: 40rem;
+
 		}
 
         .carousel-caption {
@@ -105,6 +115,10 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
+		.carousel .carousel-item.active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
 
         @media (max-width: 600px) {
             h1 { font-size: 9vw; }
@@ -113,6 +127,7 @@
             .carousel-caption { font-size: 1em; }
             .header-box { padding: 1rem; }
         }
+	
 
         /* Rounded Buttons */
         .btn-circle {
@@ -148,20 +163,16 @@
     </style>
 </head>
 <body>
-<div class="container header-container text-center my-1 position-relative">
+<div class="container header-container text-center my-1 position-relative py-0">
     <div class="header-box rounded-3 shadow-lg p-1 position-relative">
-        <h2 class="display-1 fw-light text-warning">We never forget</h2>
+        <h2 class="display-2 fw-light text-warning">We never forget</h2>
         <h2 class="display-6 fw-bold text-memory">In Memories</h2>
         <h3 class="fs-3 fst-italic text-name">Waltraud Klesy</h3>
     </div>
 </div>
 
 
-<!-- Audio Element -->
-<audio id="bg-music" loop muted>
-    <source src="music/erinnerungen.mp3" type="audio/mp3">
-    Dein Browser unterstützt kein Audio-Element.
-</audio>
+
 
   <!-- Inner -->
 <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
@@ -184,6 +195,11 @@
 <!-- Carousel wrapper -->
 
 <!-- Bootstrap Audio Controls -->
+<!-- Audio Element -->
+<audio id="bg-music" loop muted>
+    <source src="music/erinnerungen.mp3" type="audio/mp3">
+    Dein Browser unterstützt kein Audio-Element.
+</audio>
 <!-- Audio Controls -->
 <div class="audio-controls position-fixed bottom-0 end-0 m-3 d-flex flex-column align-items-end">
     <button id="playPauseBtn" class="btn btn-primary btn-circle mb-2 shadow">
@@ -244,10 +260,12 @@
     // Carousel item
     const item = document.createElement("div");
     item.classList.add("carousel-item");
+	item.classList.add("item");
+	item.classList.add("img-fluid");
     if (i === startImage) item.classList.add("active");
 
     item.innerHTML = `
-        <img src="${imageFolder}${i}.jpg" class="d-block w-100" alt="Bild ${i}">
+        <img src="${imageFolder}${i}.jpg" class="d-block w3-animate-fading" alt="Bild ${i}">
         <div class="carousel-caption d-none d-md-block">
             <p>${captions[i - 2] || ""}</p>
         </div>
@@ -284,6 +302,12 @@
             $muteBtn.html($music.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>');
         });
     });
+	$(document).ready(function(){
+	  console.log($('#carouselwithIndicators').css('height')); // check the initial height of the carousel;
+		  
+	  // now apply this height as a max-height on all the image items; css will handle the rest;
+	  $('#carouselwithIndicators').find('.carousel-item img').css('max-height', $('#carouselwithIndicators').css('height'))
+	});
 </script>
 </body>
 </html>
