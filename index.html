@@ -12,8 +12,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
     <style>
+
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
@@ -33,6 +35,47 @@
 			z-index: 1;
 			padding: 2rem 0;
 		}
+        .holder{
+            height:45rem;
+            background:gray;
+            color:#fff;
+            text-align:center;
+
+        }
+        .slick-slide, .slick-track, .slick-list, .slick-slide-fade {
+            /* ... */
+            position: relative;
+            z-index:100;
+        }
+        .slick-current .carousel-caption{
+            font-weight: bold;
+            color: #e6c78f; /* Change color based on your theme */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds readability */
+        }
+        .carousel-caption {
+            top: 97%;
+            transform: translateY(-50%);
+            bottom: initial;
+            z-index: 1200;
+            color: #000000;
+        }
+        .audio-controls{
+            z-index: 1000;
+        }
+
+        .center{
+            margin:10px;
+        }
+        .inside-image{
+            width:100%;
+            height:100%;
+        }
+        .lazy-height{
+            height:45rem;
+        }
+        .fade-height{
+            height:400px;
+        }
 
         .header-box {
             position: relative;
@@ -50,8 +93,6 @@
 			background: rgba(255, 255, 255, 0.3); /* Etwas mehr Weiß für bessere Helligkeit */
 			z-index: -1;
         }
-	
-			
 
         h1, h2, h3 {
             position: relative;
@@ -82,42 +123,6 @@
             margin: 5px 0;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
-		
-.carousel-item {
-        opacity: 0;
-  transition-property: opacity;
-  transition-duration: 1s;
-  transition-timing-function:linear;
-      }
-	  .carousel-fade .active.carousel-item-start,
-      .carousel-fade .active.carousel-item-end {
-        transition: opacity 0s 1s;
-      }
-        
-		.max-height-70{
-			height:570px;
-		}
-		.carousel-item img {
-			object-fit: contain; 
-			max-height: 32rem;
-			width: 100%;
-    height: 100%;
-		}
-
-        .carousel-caption {
-            color: white;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 1.4em;
-        }
-
-        .carousel {
-            max-width: 800px;
-            margin: auto;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-		
 
         @media (max-width: 600px) {
             h1 { font-size: 9vw; }
@@ -169,27 +174,114 @@
         <h3 class="fs-3 fst-italic text-name">Waltraud Klesy</h3>
     </div>
 </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="lazy-loader-slider">
 
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/2.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Noch kann ich nicht allein stehen</p>
+                    </div>
+                </div>
 
-  <!-- Inner -->
-<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-  <!-- Indicators -->
-  <div class="carousel-indicators" id="carousel-indicators"></div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/3.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Zusammen mit Schwester Ilse</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/4.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p></p>
+                    </div>
 
-  <!-- Inner -->
-  <div class="carousel-inner" id="carousel-inner"></div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/5.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Die Stiftstraßen-Gang</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/6.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Alle drei Schwestern: Marianne, Ilse und Waltraud</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/7.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Biking is my favourite</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/8.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Traumauto DKW</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/9.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Teenie Waltraud</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/10.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Pettycoat forever</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/11.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Spaziergänge am Rhein…</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/12.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>… und im Wald</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/13.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Woman @ work</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/14.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>2. Frühling mit Klaus</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/15.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Im Wintersport</p>
+                    </div>
+                </div>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="images/16.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Family am Bodensee</p>
+                    </div>
+                </div>
 
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+                <div class="holder center lazy-height">
+                    <img class="inside-image" data-lazy="https://blog.laterooms.com/wp-content/uploads/2011/10/LuxuryUpgrade.jpg"/>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- Carousel wrapper -->
 
 <!-- Bootstrap Audio Controls -->
 <!-- Audio Element -->
@@ -207,68 +299,40 @@
     </button>
 </div>
 
-
-
-
 <!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-		const imageFolder = "images/";
-		const imageCount = 16;
-		const startImage = 2; // Start bei Bild 2
-		const captions = [
-			"Noch kann ich nicht allein stehen",
-			"Zusammen mit Schwester Ilse",
-			"",
-			"Die Stiftstraßen-Gang",
-			"Alle drei Schwestern: Marianne, Ilse und Waltraud",
-			"Biking is my favourite",
-			"Traumauto DKW",
-			"Teenie Waltraud",
-			"Pettycoat forever",
-			"Spaziergänge am Rhein…",
-			"… und im Wald",
-			"Woman @ work",
-			"2. Frühling mit Klaus",
-			"Im Wintersport",
-			"Family am Bodensee",
-		];
 
-		const carouselInner = document.getElementById("carousel-inner");
-		const indicators = document.getElementById("carousel-indicators");
+        $('.autoplay-slider').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 4000, //DELAY BEFORE NEXT SLIDE IN MILISECONDS
+            speed: 800,
+            centerMode: true,
+            variableWidth: true,
+            adaptiveHeight: true,
+            centerPadding: '60px'
+        });
 
-		for (let i = 2; i <= imageCount; i++) {
-    const isActive = i === startImage ? "active" : "";
-
-    // Indicator buttons
-    const indicatorBtn = document.createElement("button");
-    indicatorBtn.type = "button";
-    indicatorBtn.setAttribute("data-mdb-target", "#carouselBasicExample");
-    indicatorBtn.setAttribute("data-mdb-slide-to", i - 2);  // Fixing the index (starts from 0)
-    indicatorBtn.setAttribute("aria-label", `Slide ${i}`);
-    if (i === startImage) {
-        indicatorBtn.classList.add("active");
-        indicatorBtn.setAttribute("aria-current", "true");
-    }
-    indicators.appendChild(indicatorBtn);
-
-    // Carousel item
-    const item = document.createElement("div");
-    item.classList.add("carousel-item");
-
-	item.classList.add("img-fluid");
-    if (i === startImage) item.classList.add("active");
-
-    item.innerHTML = `
-        <img src="${imageFolder}${i}.jpg" class="d-block" alt="Bild ${i}">
-        <div class="carousel-caption d-none d-md-block">
-            <p>${captions[i - 2] || ""}</p>
-        </div>
-    `;
-    carouselInner.appendChild(item);
-}
+        $(".lazy-loader-slider").slick({
+            // To use lazy loading, set a data-lazy attribute
+            lazyLoad: 'ondemand',
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2500, //DELAY BEFORE NEXT SLIDE IN MILISECONDS
+            speed: 800,
+            variableWidth: true,
+            adaptiveHeight: true,
+            centerPadding: '60px',
+            centerMode: true,
+            arrows: false,
+        });
 
     
 
